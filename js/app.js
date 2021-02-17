@@ -125,13 +125,14 @@ function filterCourse(e){
 
 const printStars = (count)=>{
     let stars='';
-    let dec = (count % 1 == 0)?false:true;
+    let dec = (count % 1 == 0)?false:true; // is decimal the number?
     for(x = 1; x <= 5; x++){
         if(dec == false){
             stars += (x <= count)?`<img src="img/star.png">`:`<img src="img/star-empty.png">`;
         }else{
             if(x <= count){
                 stars += `<img src="img/star.png">`;
+            //As the number count is decimal, if the x is equal to count, the count incremment it and print the start-medium 
             }else if(x == Math.trunc(count)+1){
                 stars += `<img src="img/star-medium.png">`;
             }else{
@@ -146,7 +147,7 @@ function printCourses(data, type) {
     coursesList.innerHTML = "";
     data.forEach(ob => {
         let category = document.querySelector("select option:checked").value;
-        // I convert the value to string always for compare
+        // I convert the values to upper case always for compare
         if(!type || String(ob[category]).toUpperCase().includes(type.toUpperCase())){
             coursesList.innerHTML += `
             <div class="card">
